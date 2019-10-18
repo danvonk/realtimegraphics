@@ -31,6 +31,8 @@ std::vector<Assignment01::Student> Assignment01::getGroup() const
     /// ============= STUDENT CODE BEGIN =============
 
     group.push_back({"Daniel Vonk", 377770});
+    group.push_back({"XYZ", 1234});
+    group.push_back({"XYZ", 123465});
 
     /// ============= STUDENT CODE END =============
     return group;
@@ -51,12 +53,19 @@ void Assignment01::mainLoop()
 
     // this is an example of the simplest main loop:
     // variable timestep with no time measuring
+    constexpr auto target_fps = 1 / 60.0f;
+
+    double prev_time;
+    double curr_time = timeInSeconds();
+
     while (!shouldClose())
     {
-        // update the simulation
-        // (parameter is timestep in seconds)
-        update(0.0f /* TODO */);
+        prev_time = curr_time;
+        curr_time = timeInSeconds();
 
+        const auto delta = (curr_time - prev_time);
+
+		update(delta);
         // render the simulation
         render();
 
@@ -65,7 +74,8 @@ void Assignment01::mainLoop()
 
         // give the CPU time to breathe
         // (negative arguments are ignored)
-        sleepSeconds(16 / 1000.0);
+        //std::cout << "Sleeping for : " << curr_time + target_fps - timeInSeconds() << '\n';
+        sleepSeconds(curr_time + target_fps - timeInSeconds());
     }
 
     /// ============= STUDENT CODE END =============
