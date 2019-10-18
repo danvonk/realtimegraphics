@@ -30,7 +30,7 @@ std::vector<Assignment01::Student> Assignment01::getGroup() const
     /// e.g. group.push_back({"John Doe", 333333});
     /// ============= STUDENT CODE BEGIN =============
 
-    group.push_back({"John Doe", 333333});
+    group.push_back({"Daniel Vonk", 377770});
 
     /// ============= STUDENT CODE END =============
     return group;
